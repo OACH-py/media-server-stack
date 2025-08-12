@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    networks:
+      - media-stack-network
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - ${TV_PATH}:/tv
+      - ${MOVIES_PATH}:/movies
+      - ${YOUTUBE_PATH}:/youtube
+      - ${MUSIC_PATH}:/Música
+    ports:
+      - "${JELLYFIN_PORT}:8096"
+    restart: unless-stopped
+
+networks:
+  media-stack-network:
+    external: true
+

@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
+    networks:
+      - media-stack-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WEBUI_PORT=${QBITTORRENT_PORT}
+    volumes:
+      - ./qbittorrent/config:/config
+      - ${DOWNLOADS_PATH}:/downloads
+      - ${MOVIES_PATH}:/movies
+      - ${TV_PATH}:/tvshows
+    ports:
+      - "${QBITTORRENT_PORT}:${QBITTORRENT_PORT}"
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+networks:
+  media-stack-network:
+    external: true
+

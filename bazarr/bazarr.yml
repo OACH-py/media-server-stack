@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    networks:
+      - media-stack-network
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./bazarr/config:/config
+      - ${MOVIES_PATH}:/movies
+      - ${TV_PATH}:/tv
+    ports:
+      - "${BAZARR_PORT}:6767"
+    restart: unless-stopped
+
+networks:
+  media-stack-network:
+    external: true
+

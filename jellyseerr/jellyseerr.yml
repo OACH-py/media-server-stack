@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - TZ=${TZ}
+      - PORT=${JELLYSEERR_PORT}
+    networks:
+      - media-stack-network
+    ports:
+      - "${JELLYSEERR_PORT}:${JELLYSEERR_PORT}"
+    volumes:
+      - ./jellyseerr/config:/app/config
+    restart: unless-stopped
+
+networks:
+  media-stack-network:
+    external: true
+
