@@ -41,7 +41,7 @@ docker-compose up -d
 ---
 
 📂 Estructura de carpetas
-
+```
 media-server-stack/
 ├── bazarr/
 │   └── config/
@@ -66,7 +66,7 @@ media-server-stack/
 └── sonarr/
     └── config/
 
-
+```
 ---
 
 🔧 Variables en .env
