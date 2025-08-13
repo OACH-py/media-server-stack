@@ -1,5 +1,3 @@
-Perfecto, aquí tienes todo el contenido completo del README.md listo para copiar y pegar sin que se corte nada:
-
 # 📼 Media Server Stack
 
 Un stack **Docker** completo para gestionar y organizar tu contenido multimedia: películas, series, música y descargas, con las siguientes herramientas:
